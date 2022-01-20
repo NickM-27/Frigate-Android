@@ -1,12 +1,8 @@
 package video.frigate.android.dashboard
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 
-class DashboardActivity : ComponentActivity() {
+class DashboardActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-    }
 }
