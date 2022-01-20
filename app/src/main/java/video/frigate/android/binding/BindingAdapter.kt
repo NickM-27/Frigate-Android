@@ -18,7 +18,7 @@ object BindingAdapter {
     @JvmStatic
     fun ImageView.setCameraSnapshot(name: String?) {
         name ?: return
-        load("192.168.50.106:5000/api/$name/latest.jpg") {
+        load("http://192.168.50.106:5000/api/$name/latest.jpg") {
             crossfade(false)
             transformations(CircleCropTransformation())
         }

@@ -2,27 +2,33 @@ package video.frigate.android.api
 
 import androidx.annotation.Keep
 import androidx.recyclerview.widget.DiffUtil
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
+import video.frigate.android.FrigateApp
 
 @Serializable
 @Keep
 class FrigateConfig(
+
+    @SerialName("cameras")
     var cameras_literal: JsonObject
 ) {
 
     fun getCameras(): List<FrigateCamera> =
         cameras_literal.values.map { jsonElement ->
-            Json.decodeFromJsonElement(jsonElement)
+            FrigateApp.json.decodeFromJsonElement(jsonElement)
         }
 }
 
 @Serializable
 @Keep
 class FrigateCamera(
+
     var name: String,
+
+    @SerialName("detect")
     var detectConfig: DetectConfig
 ) {
 
