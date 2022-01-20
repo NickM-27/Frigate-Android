@@ -4,6 +4,7 @@ class FrigateApi private constructor() {
 
     companion object {
 
-
+        fun getInstance(): FrigateApi =
+            FrigateApi()
     }
 }
