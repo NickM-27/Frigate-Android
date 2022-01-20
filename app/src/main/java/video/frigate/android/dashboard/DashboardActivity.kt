@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.flow.collectLatest
 import video.frigate.android.camera.CamerasAdapter
 import video.frigate.android.databinding.ActivityDashboardBinding
+import video.frigate.android.ext.applyBindingInsets
+import video.frigate.android.ext.themeBinding
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -23,6 +25,8 @@ class DashboardActivity : AppCompatActivity() {
     private fun bindViews() {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        themeBinding(binding)
+        binding.applyBindingInsets()
         binding.cameras.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = CamerasAdapter(context).also { adapter -> camerasAdapter = adapter }
