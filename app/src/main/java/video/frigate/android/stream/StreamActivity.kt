@@ -8,14 +8,26 @@ import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.audio.AudioAttributes
 import com.google.android.exoplayer2.ext.rtmp.RtmpDataSource
 import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
+import com.google.android.exoplayer2.trackselection.TrackSelector
 import video.frigate.android.Constants
 import video.frigate.android.databinding.ActivityStreamBinding
 import video.frigate.android.ext.applyBindingInsets
 import video.frigate.android.ext.themeBinding
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
+
+import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
+
+import com.google.android.exoplayer2.trackselection.TrackSelection
+
+import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
+
+import com.google.android.exoplayer2.upstream.BandwidthMeter
+
+
+
 
 class StreamActivity : AppCompatActivity() {
 
@@ -70,13 +82,13 @@ class StreamActivity : AppCompatActivity() {
     private fun bindViews() {
         binding = ActivityStreamBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        themeBinding(binding)
-        binding.applyBindingInsets()
+        //themeBinding(binding)
+        //binding.applyBindingInsets()
         loadData()
     }
 
     private fun loadData() {
-        player = ExoPlayer.Builder(this).build()
+        player = ExoPlayer.Builder(this).setTrackSelector(DefaultTrackSelector(this, AdaptiveTrackSelection.Factory())).build()
         binding.stream.isVisible = true
         binding.stream.player = player
         binding.stream.keepScreenOn = true
