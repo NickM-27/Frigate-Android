@@ -34,8 +34,9 @@ fun Context.isDarkTheme(): Boolean =
 
 private fun Context.hideSystemShadows() {
     try {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && this is Activity)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && this is Activity) {
             window.isNavigationBarContrastEnforced = false
+        }
     } catch (e: NoSuchMethodError) {
     }
 }

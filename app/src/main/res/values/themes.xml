@@ -16,6 +16,7 @@
         <item name="android:textColorPrimaryInverse">@color/colorPrimaryTextInverse</item>
         <item name="android:textColorSecondaryInverse">@color/colorSecondaryTextInverse</item>
         <item name="android:textColorTertiaryInverse">@color/colorTertiaryTextInverse</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:textColorHint">@color/colorTertiaryText</item>
         <item name="windowActionModeOverlay">true</item>
