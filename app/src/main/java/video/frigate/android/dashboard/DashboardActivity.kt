@@ -3,6 +3,7 @@ package video.frigate.android.dashboard
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.doOnPreDraw
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.flow.collectLatest
@@ -10,6 +11,7 @@ import video.frigate.android.camera.CamerasAdapter
 import video.frigate.android.databinding.ActivityDashboardBinding
 import video.frigate.android.ext.applyBindingInsets
 import video.frigate.android.ext.themeBinding
+import video.frigate.android.helper.EndOffsetItemDecoration
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -29,8 +31,15 @@ class DashboardActivity : AppCompatActivity() {
         binding.applyBindingInsets()
         binding.cameras.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = CamerasAdapter(context).also { adapter -> camerasAdapter = adapter }
+            adapter = CamerasAdapter(this@DashboardActivity).also { adapter -> camerasAdapter = adapter }
         }
+
+        binding.toolbar.doOnPreDraw {
+            if (binding.cameras.itemDecorationCount == 0) {
+                binding.cameras.addItemDecoration(EndOffsetItemDecoration())
+            }
+        }
+
         loadData()
     }
 

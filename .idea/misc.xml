@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.44155844155844154" />
+        <entry key="app/src/main/res/layout/activity_stream.xml" value="0.5619791666666667" />
         <entry key="app/src/main/res/layout/view_holder_camera.xml" value="0.33" />
       </map>
     </option>
