@@ -7,6 +7,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
 import video.frigate.android.FrigateApp
+import java.util.*
 
 @Serializable
 @Keep
@@ -31,6 +32,11 @@ class FrigateCamera(
     @SerialName("detect")
     var detectConfig: DetectConfig
 ) {
+
+    fun getFormattedName(): String =
+        name.split('_')
+            .map { string -> string.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } }
+            .joinToString(separator = " ") { it }
 
     companion object {
 
